@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sixer Site</title>
+    <meta
+      name="description"
+      content="Sixer privacy policy and support site."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5efe4;
+        --text: #211c16;
+        --muted: #665d52;
+        --accent: #8b5e34;
+        --border: #d9c8b4;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: linear-gradient(180deg, #f8f2e8, var(--bg));
+        color: var(--text);
+        line-height: 1.6;
+      }
+      main { max-width: 760px; margin: 0 auto; padding: 48px 20px 72px; }
+      .card {
+        background: rgba(255, 250, 242, 0.92);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 32px 24px;
+        box-shadow: 0 14px 40px rgba(33, 28, 22, 0.08);
+      }
+      h1, h2 {
+        font-family: Inter, system-ui, sans-serif;
+        line-height: 1.15;
+        margin: 0 0 12px;
+      }
+      h1 { font-size: clamp(2rem, 4vw, 3rem); }
+      p, li { font-size: 1rem; }
+      .meta, .note { color: var(--muted); }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(139, 94, 52, 0.1);
+        color: var(--accent);
+        font: 600 0.85rem/1 Inter, system-ui, sans-serif;
+        letter-spacing: 0.02em;
+        margin-bottom: 14px;
+      }
+      a {
+        color: var(--accent);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+      .links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        margin-top: 24px;
+      }
+      .linkcard {
+        display: block;
+        padding: 18px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.65);
+      }
+      .linkcard strong {
+        display: block;
+        font-family: Inter, system-ui, sans-serif;
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article class="card">
+        <div class="pill">Sixer</div>
+        <h1>Privacy and Support</h1>
+        <p class="meta">Go Birds Pages site for Sixer.</p>
+        <p>
+          Use this site for the public privacy policy, support information, and
+          the root-host <code>app-ads.txt</code> file that AdMob crawls.
+        </p>
+
+        <div class="links">
+          <a class="linkcard" href="/parlor/privacy/">
+            <strong>Privacy Policy</strong>
+            <span>Read how Sixer handles gameplay data, ads, purchases, and crash reports.</span>
+          </a>
+          <a class="linkcard" href="/parlor/support/">
+            <strong>Support</strong>
+            <span>Find the contact path for purchase, crash, and gameplay help.</span>
+          </a>
+          <a class="linkcard" href="https://go-birds.github.io/app-ads.txt">
+            <strong>app-ads.txt</strong>
+            <span>AdMob publisher file served from the developer website root.</span>
+          </a>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
