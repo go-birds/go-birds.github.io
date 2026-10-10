@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.gobirds.sundown",
+      "sha256_cert_fingerprints": [
+        "D2:9B:2E:44:F3:95:55:92:8D:D9:3D:21:AA:1D:58:5B:35:B6:AC:52:5F:B8:3B:FE:05:5E:81:2B:FA:1C:A4:37"
+      ]
+    }
+  }
+]
