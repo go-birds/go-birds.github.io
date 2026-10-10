@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#21192e"><meta name="description" content="A little logic. A clear sky. Play a shared Sundown sun and moon puzzle on iPhone, iPad or Android."><title>A Sundown puzzle for you</title>
+<style>[hidden]{display:none!important}body{margin:0;background:#21192e;color:#fff2dc;font:18px/1.6 system-ui,sans-serif;display:grid;min-height:100svh;place-items:center}main{max-width:540px;padding:36px 24px;text-align:center}.sun{font-size:76px;color:#f5ba6a}h1{line-height:1.15;font-size:42px}a,button{display:block;padding:14px 22px;margin:12px 0;border:1px solid #887a99;border-radius:14px;color:inherit;text-decoration:none;font:inherit;background:transparent;cursor:pointer}.primary{background:#f5ba6a;color:#21192e;border:none}code{overflow-wrap:anywhere}small{color:#c4b7d0}#status{min-height:1.6em}</style></head>
+<body><main><div class="sun" aria-hidden="true">☀</div><p>SUNDOWN</p><h1>A little logic.<br>A clear sky.</h1><p id="description">A sun and moon logic puzzle, ready when you are.</p><a id="open" class="primary" hidden>Open this puzzle in Sundown</a><p id="puzzle"></p><button id="copy" hidden>Copy puzzle link</button><p id="status" role="status"></p><a href="https://apps.apple.com/app/id6777302102">Download for iPhone or iPad</a><a href="https://play.google.com/store/apps/details?id=com.gobirds.sundown">Get it on Google Play</a><small>After installing, return here and open your puzzle.<br>Daily puzzles use the same UTC date for everyone.</small></main>
+<script>
+const params = new URLSearchParams(location.search);
+const code = params.get('code'), date = params.get('date'), variant = params.get('variant'), challenge = params.get('challenge');
+const validCode = code && !date && !challenge && /^[A-Za-z0-9-]{1,128}$/.test(code);
+const parsed = date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? new Date(date+'T00:00:00Z') : null;
+const validDate = !code && !challenge && parsed && !isNaN(parsed) && parsed.toISOString().slice(0,10) === date && (!variant || variant === 'sunrise');
+const validChallenge = challenge && !code && !date && /^[a-z0-9-]{1,80}$/.test(challenge);
+if(validCode || validDate || validChallenge){
+ const clean = new URLSearchParams(validCode ? {code} : validChallenge ? {challenge} : {date, ...(variant ? {variant} : {})});
+ const link = 'https://go-birds.github.io/sundown/play/?'+clean;
+ const open = document.getElementById('open');open.hidden=false;open.href='sundown://puzzle?'+clean;
+ document.getElementById('description').textContent = (validCode || validChallenge) ? 'A friend has shared a puzzle with you.' : `${variant === 'sunrise' ? 'Sunrise' : 'Daily'} puzzle for ${date}.`;
+ document.getElementById('puzzle').textContent=validCode ? 'Puzzle code: '+code : '';
+ const copy=document.getElementById('copy');copy.hidden=false;copy.onclick=async()=>{try{await navigator.clipboard.writeText(link);document.getElementById('status').textContent='Puzzle link copied.'}catch{document.getElementById('status').textContent='Copy the link from your browser’s address bar.'}};
+}else if(location.search){document.getElementById('description').textContent='This puzzle link is incomplete. Ask your friend to share it again.';}
+</script></body></html>
